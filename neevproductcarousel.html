@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Product Collection</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+            body{
+                background-color:lavenderblush;
+                color:darkred;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                min-height:100vh;
+                padding:20px;
+            }
+            .carouselsection{
+                width:100%;
+                text-align:center;
+                max-width:1200px;
+            }
+            .sectiontitle{
+                font-size:2.5rem;
+                margin-bottom:20px;
+                text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);
+            }
+            .sectionsubtitle{
+                font-size:1.2rem;
+                margin-bottom:40px;
+            }
+            .carouselcontainer{
+                position:relative;
+                width:100%;
+                height:500px;
+                margin-bottom:40px;
+                perspective:1200px;
+            }
+            .carousel{
+                position:absolute;
+                width:100%;
+                height:100%;
+                transform-style:preserve-3d;
+                transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            .carouselcard{
+                position:absolute;
+                height:400px;
+                width:300px;
+                left:50%;
+                top:50%;
+                margin-left:-150px;
+                margin-top:-200px;
+                border-radius:15px;
+                overflow:hidden;
+                box-shadow:0 15px 35px rgba(131, 5, 5, 0.2);
+                backface-visibility: hidden;
+                transform-origin:center center;
+                transition:all 0.5s ease;
+            }
+            .carouselcard img{
+                width:100%;
+                height:100%;
+                object-fit:cover;
+            }
+            .content{
+                position:absolute;
+                bottom:0;
+                left:0;
+                text-align:left;
+                padding:20px;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+                color:white;
+            }
+            .contenttitle{
+                font-size:1.5rem;
+                font-weight:700;
+                margin-bottom:5px;
+            }
+            .contentdescription{
+                font-size:0.9rem;
+                margin-bottom:10px;
+            }
+            .productprice{
+                font-size:1.2rem;
+                color:pink;
+            }
+            .buttonsection{
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:0 20px;
+                pointer-events: none;
+            }
+            .navbutton{
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                justify-content:center;
+                display:flex;
+                align-items:center;
+                z-index:10;
+                font-size:1.5rem;
+                pointer-events:all;
+            }
+            .buttonprevious{
+                left:20px;
+            }
+            .buttonnext{
+                right:20px;
+            }
+            .carouselindicators{
+                display:flex;
+                justify-content:center;
+                gap:10px;
+            }
+            .indicator{
+                height:12px;
+                width:12px;
+                border-radius:50%;
+                background-color:indianred;
+                transition:all 0.3s ease;
+            }
+            .indicator.active{
+                background-color:white;
+                transform:scale(1.2);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="carouselsection">
+            <h1 class="sectiontitle">Valentine's Day Collection</h1>
+            <p class="sectionsubtitle">Love is in the air</p>
+            <div class="carouselcontainer">
+                <div class="carousel" id="carousel">
+                    <div class="carouselcard" data-index="0">
+                        <img src="https://teachernoire.shop/cdn/shop/products/unisex-crew-neck-sweatshirt-red-front-63b6518d89537.jpg?v=1672901245" alt="love sweater">
+                        <div class="content">
+                            <h3 class="contenttitle">Love Sweater</h3>
+                            <p class="contentdescription">Perfect sweater for teachers, with valentine's day-themed candy hearts spreading the love.</p>
+                            <div class="productprice">$30.00 USD</div>
+                        </div>
+                    </div>
+                    <div class="carouselcard" data-index="1">
+                        <img src="https://compartes.com/cdn/shop/articles/Picture1_520x500_c90069af-38de-405d-b083-0e0e7f83d63a.png?v=1767951803" alt="chocolates">
+                        <div class="content">
+                            <h3 class="contenttitle">Valentine Chocolates</h3>
+                            <p class="contentdescription">Chocolates for your friends, family, or that special someone</p>
+                            <div class="productprice">$25.00 USD</div>
+                        </div>
+                    </div>
+                    <div class="carouselcard" data-index="2">
+                        <img src="https://m.media-amazon.com/images/I/71DzCrzGElL.jpg" alt="mugs">
+                        <div class="content">
+                            <h3 class="contenttitle">Mugs</h3>
+                            <p class="contentdescription">Adorable mug set perfect for gift-giving and feeling the festive vibes!</p>
+                            <div class="productprice">$30.00 USD</div>
+                        </div>
+                    </div>
+                    <div class="carouselcard" data-index="3">
+                        <img src="https://teachernoire.shop/cdn/shop/products/unisex-crew-neck-sweatshirt-red-front-63b6518d89537.jpg?v=1672901245" alt="love sweater">
+                        <div class="content">
+                            <h3 class="contenttitle">Love Sweater</h3>
+                            <p class="contentdescription">Perfect sweater for teachers, with valentine's day-themed candy hearts spreading the love.</p>
+                            <div class="productprice">$30.00 USD</div>
+                        </div>
+                    </div>
+                <div class="carouselcard" data-index="4">
+                    <img src="https://teachernoire.shop/cdn/shop/products/unisex-crew-neck-sweatshirt-red-front-63b6518d89537.jpg?v=1672901245" alt="love sweater">
+                    <div class="content">
+                        <h3 class="contenttitle">Love Sweater</h3>
+                        <p class="contentdescription">Perfect sweater for teachers, with valentine's day-themed candy hearts spreading the love.</p>
+                        <div class="productprice">$30.00 USD</div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsection">
+                <div class="buttonprevious navbutton">⬅️</div>
+                <div class="buttonnext navbutton">➡️</div>
+            </div>
+        </div>
+        <div class="carouselindicators" id="indicators"></div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const carousel = document.getElementById("carousel");
+    const slideElements = document.querySelectorAll(".carouselcard");
+    const buttonprevious = document.querySelector(".buttonprevious");
+    const buttonnext = document.querySelector(".buttonnext");
+    const indicatorscontainer = document.getElementById("indicators");
+
+    let currentIndex = 0;
+    let angle = 0;
+    const totalCards = slideElements.length;
+    const angleRotate = 360 / totalCards;
+
+    // Create indicators
+    for(let i=0; i<totalCards; i++){
+        const indicator = document.createElement("div");
+        indicator.classList.add("indicator");
+        if(i===0) indicator.classList.add("active");
+        indicator.addEventListener("click", () => slider(i));
+        indicatorscontainer.appendChild(indicator);
+    }
+    const indicators = document.querySelectorAll(".indicator");
+
+    function slider(index){
+        currentIndex = index;
+        angle = -angleRotate * currentIndex;
+        rotateCarousel();
+    }
+
+    function positioningcards(){
+        slideElements.forEach((card, index)=>{
+            const cardAngle = angleRotate * index;
+            const z = 250;
+            card.style.transform = `rotateY(${cardAngle}deg) translateZ(${z}px)`;
+        });
+    }
+
+    function rotateCarousel(){
+        carousel.style.transform = `rotateY(${angle}deg)`;
+        updateIndicator();
+    }
+
+    function updateIndicator(){
+        indicators.forEach((indicator, index)=>{
+            indicator.classList.toggle("active", index === currentIndex);
+        });
+    }
+
+    // Prev/Next buttons
+    buttonnext.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalCards;
+        angle = -angleRotate * currentIndex;
+        rotateCarousel();
+    });
+
+    buttonprevious.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        angle = -angleRotate * currentIndex;
+        rotateCarousel();
+    });
+
+    // Initial setup
+     rotateCarousel();
+    positioningcards();
+   
+});
+</script>
+
+    </body>
+</html>
